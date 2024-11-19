@@ -1,0 +1,25 @@
+# duckdb:
+#   outputs:
+#     dev:
+#       type: duckdb
+#       path: "{{ env_var('JAFFLE_DB_PATH', './reports/jaffle_shop.duckdb') }}"
+#       database: "{{ env_var('JAFFLE_DB_NAME', 'jaffle_shop') }}"
+#       schema: "{{ env_var('JAFFLE_TARGET_SCHEMA', 'analytics') }}"
+#       threads: 4
+#   target: dev
+
+
+tutorial-jrtests-snowflake-db:
+  outputs:
+    dev:
+      type: snowflake
+      account: rea35014.us-east-1
+      user: transform_user
+      password: Password
+      role: TRANSFORM_ROLE
+      database: ANALYTICS
+      warehouse: TRANSFORM_WH
+      schema: DBT
+      threads: 1
+      client_session_keep_alive: False
+  target: dev
